@@ -9,7 +9,7 @@ var middleware = {
                     req.flash('error', 'Something went wrong.');
                     res.redirect('back');
                 } else {
-                    if(campground.author.id.equals(req.user._id)){
+                    if(campground.author.id.equals(req.user._id) || req.user.isAdmin){
                         next();
                     } else {
                         req.flash('error', 'You must own a campground to edit or delete.');
@@ -30,7 +30,7 @@ var middleware = {
                     req.flash('error', 'Something went wrong.');
                     res.redirect('back');
                 } else {
-                    if(comment.author.id.equals(req.user._id)){
+                    if(comment.author.id.equals(req.user._id) || req.user.isAdmin){
                         next();
                     } else {
                         req.flash('error', 'You must own a comment to edit or delete.');

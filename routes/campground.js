@@ -13,7 +13,6 @@ router.get('', function(req, res){
             res.render('campgrounds/index', {campgrounds: campgrounds});
         }
     });
-    
 });
 
 //NEU route to display the Form
@@ -42,7 +41,6 @@ router.post('/', middleware.isLoggedIn, function(req, res){
             res.redirect('/campgrounds/' + campground._id);
         }
     });
-
 });
 
 //SHOW route display datails 

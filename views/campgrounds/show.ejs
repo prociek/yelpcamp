@@ -17,9 +17,9 @@
             </div>
             <div class="p-2">
                 <p class="p-2 text-justify"><%= campground.description %></p>
-                <small><em>Posted by <%= campground.author.username %></em></small>
+                <small><em>Posted by <a href="/user/<%= campground.author.id %>"><%= campground.author.username %></a> <%= ' ' + moment(campground.createDate).format('ddd-DD-MM-YYYY')%></em></small>
             </div>
-            <% if(currentUser && campground.author.id.equals(currentUser._id)){ %>
+            <% if(currentUser && campground.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
             <a class="btn btn-warning m-2" href="/campgrounds/<%= campground._id %>/edit">Edit</a>
             <form class="d-inline" action="/campgrounds/<%= campground._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-danger">Delete</button>
@@ -35,10 +35,10 @@
         <div class="list-group-item bg-light">
             <div class="d-flex w-100 justify-content-between">
             <h4 class="h6 mb-1"><%= comment.author.username %></h4>
-            <small>3 days ago</small>
+            <small><%= moment(comment.createDate).fromNow() %></small>
             </div>
             <p class="mb-1"><%= comment.title %></p>
-            <% if(currentUser && comment.author.id.equals(currentUser._id)){ %>
+            <% if(currentUser && comment.author.id.equals(currentUser._id) || currentUser && currentUser.isAdmin){ %>
             <a class="btn btn-warning" href="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>/edit">Edit</a>
             <form class="d-inline" action="/campgrounds/<%= campground._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST">
                 <button class="btn btn-danger">Delete</button>

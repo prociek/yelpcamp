@@ -1,5 +1,4 @@
 body {
-    position: relative;
     width: 100vw;
     height: 100vh;
     background-color: #000;
@@ -90,6 +89,6 @@ body {
 }
 
 /* Older browser support - .no-cssanimations class added by modernizr */
-.no-cssanimations .slideshow li {
+.no-cssanimations .slider li {
 	opacity: 1;
 }

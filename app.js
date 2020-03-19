@@ -20,10 +20,12 @@ app.set('view engine', 'ejs'); //Setting view engine to ejs
 app.use(express.static(__dirname + '/public')); //Search style.css in public
 
 //Connecting with Database
-mongoose.connect('mongodb://localhost:27017/yelpcamp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
-
+//mongoose.connect('mongodb://localhost:27017/yelpcamp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+//mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+mongoose.connect('mongodb+srv://prociek:basia1@cluster0-spslq.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+console.log(process.env.DATABASEURL);
 app.use(flash());
-
+app.locals.moment = require('moment');
 //Autentification setup
 app.use(require('express-session')({
     secret: 'what the mother fucker',
