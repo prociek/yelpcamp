@@ -15,15 +15,14 @@ var express         = require('express'),
     commentRoutes   = require('./routes/comment'),
     indexRoutes     = require('./routes/index');
 
+require('dotenv').config();
 app.use(bodyParser.urlencoded({extended: true})); //Use BodyParser to retriev all data from Form
 app.set('view engine', 'ejs'); //Setting view engine to ejs
 app.use(express.static(__dirname + '/public')); //Search style.css in public
 
 //Connecting with Database
-//mongoose.connect('mongodb://localhost:27017/yelpcamp', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
-//mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
-mongoose.connect('mongodb+srv://prociek:basia1@cluster0-spslq.mongodb.net/test?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
-console.log(process.env.DATABASEURL);
+mongoose.connect(process.env.DATABASEURL, { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false});
+
 app.use(flash());
 app.locals.moment = require('moment');
 //Autentification setup
@@ -53,6 +52,6 @@ app.use('/campgrounds', campgroundRoutes);
 app.use('/campgrounds/:id/comments', commentRoutes);
 
 //Starting the server
-app.listen(3000, function(){
+app.listen(process.env.PORT, function(){
     console.log('YelpCamp App is Started');
 });
