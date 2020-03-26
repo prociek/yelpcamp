@@ -2,25 +2,31 @@
 <html lang="EN">
     <head>
         <title>Yelpcamp</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
         <link rel="stylesheet" href="/stylesheets/style.css">
     </head>
     <body>
                 
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <a class="navbar-brand" href="/">YelpCamp</a> 
-            <a class="navbar-brand" href="/campgrounds">Campgrounds</a> 
-            <div class="collapse navbar-collapse justify-content-end">
-                <ul class="navbar-nav flex-row">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="/">YelpCamp</a>  
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/campgrounds">Campgrounds</a>
+                    </li>
                     <% if(!currentUser){ %>
-                        <li class="navbar-item">
-                            <a class="nav-link" href="/login">Login</a>
-                        </li>
-                        <li class="navbar-item">
-                            <a class="nav-link" href="/register">Sign up</a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/register">Sign up</a>
+                    </li>
                     <% } else { %>
-                    <li class="navbar-item">
+                    <li class="nav-item">
                         <a class="nav-link" href="#">Logged as <b><%= currentUser.username %></b></a>
                     </li>
                     <li class="navbar-item">
