@@ -15,7 +15,7 @@ body {
 }
 
 .box h1 {
-    font-size: 3rem;
+    font-size: 2.7rem;
     font-weight: normal;
     letter-spacing: 3px;
     margin-bottom: 1.5rem;
@@ -91,4 +91,10 @@ body {
 /* Older browser support - .no-cssanimations class added by modernizr */
 .no-cssanimations .slider li {
 	opacity: 1;
+}
+
+@media (max-width: 768px){
+    .box h1 {
+        font-size: 2rem;
+    }
 }

@@ -1,15 +1,15 @@
 <%- include('../partials/header') %>
 
-<header class="jumbotron">
+<header class="jumbotron text-center">
     <h1>Welcome to YelpCamp!</h1>
     <p>View our hand-picked campgrounds from all over the World</p>
     <a href="/campgrounds/new" class="btn btn-lg btn-primary">Create new campground</a>
 </header>
-<div style="text-align: center;" class="row">
+<div class="row text-center">
 <% campgrounds.forEach(function(camp){ %>
 
     <div class="col-xl-3 col-lg-4 col-md-6">
-        <div class="img-thumbnail">
+        <div class="img-thumbnail h-100 d-flex flex-column justify-content-between align-items-center">
             <a href="/campgrounds/<%= camp._id %>">
                 <img style="width: 100%; margin-bottom: 6px;" src="<%= camp.image %>">
             </a>
