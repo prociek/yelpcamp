@@ -60,7 +60,7 @@ router.get('/logout', function(req, res){
 
 router.get('/user/:id', function(req, res){
     User.findById(req.params.id, function(err, user){
-        if(err || !user.length>0){
+        if(err || !user){
             req.flash('error', 'Something went wrong.');
             res.redirect('back');
         } else {

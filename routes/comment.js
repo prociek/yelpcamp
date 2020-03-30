@@ -7,7 +7,7 @@ var middleware = require('../middleware');
 // New
 router.get('/new', middleware.isLoggedIn, function(req, res){
     Campground.findById(req.params.id, function(err, campground){
-        if(err || !campground.length>0){
+        if(err || !campground){
             req.flash('error', 'Something went wrong.');
             req.redirect('back');
         } else {
@@ -19,12 +19,12 @@ router.get('/new', middleware.isLoggedIn, function(req, res){
 // Create
 router.post('/', middleware.isLoggedIn, function(req, res){
     Campground.findById(req.params.id, function(err, campground){
-        if(err || !campground.length>0){
+        if(err || !campground){
             req.flash('error', 'Something went wrong.');
             res.redirect('back');
         } else {
             Comment.create(req.body.comment, function(err, comment){
-                if(err || !comment.length>0){
+                if(err || !comment){
                     req.flash('error', 'Something went wrong.');
                     res.redirect('back');
                 } else {
@@ -45,7 +45,7 @@ router.post('/', middleware.isLoggedIn, function(req, res){
 //Edit route
 router.get('/:commentID/edit', middleware.isCommentOwner, function(req, res){
     Comment.findById(req.params.commentID, function(err, comment){
-        if(err || !comment.length>0){
+        if(err || !comment){
             req.flash('error', 'Something went wrong.');
             res.redirect('back');
         } else {
@@ -57,7 +57,7 @@ router.get('/:commentID/edit', middleware.isCommentOwner, function(req, res){
 //Update route
 router.put('/:commentID', middleware.isCommentOwner, function(req, res){
     Comment.findByIdAndUpdate(req.params.commentID, req.body.comment, function(err, comment){
-        if(err || !comment.length>0){
+        if(err || !comment){
             req.flash('error', 'Something went wrong.');
             res.redirect('back');
         } else {
