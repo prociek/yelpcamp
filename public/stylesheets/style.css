@@ -1,0 +1,9 @@
+input[type="file"] {
+    display: none;
+}
+
+.file-upload {
+    color: rgb(134, 133, 133);
+    cursor: pointer;
+    text-align: left;
+}

@@ -2,7 +2,7 @@
 
 <div class="row align-content-center text-center flex-column align-items-center">
     <h1 class="mb-4">Add new comment to <%= campground.name %></h1>
-    <div class=""style="width: 30%;">
+    <div class="col-8 col-md-5 col-xl-4">
         <div class="form-group">
             <form action="/campgrounds/<%= campground._id %>/comments" method="POST">
                 <input class="form-control mb-3" type="text" name="comment[title]" placeholder="Title">
